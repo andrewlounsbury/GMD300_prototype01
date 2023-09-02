@@ -10,7 +10,6 @@ public class FirstPersonController : MonoBehaviour
     public float RotationSpeed = 2500;
     public InputActionAsset CharacterActionAsset;
     public Camera FirstPersonCamera;
-    public Transform PlayerBody; 
 
     private InputAction moveAction; 
     private InputAction rotateAction;
@@ -50,14 +49,13 @@ public class FirstPersonController : MonoBehaviour
         currentRotationAngle = new Vector3(currentRotationAngle.x - rotateValue.y, currentRotationAngle.y + rotateValue.x, 0);
         FirstPersonCamera.transform.rotation = Quaternion.Euler(currentRotationAngle);
         currentRotationAngle = new Vector3(Mathf.Clamp(currentRotationAngle.x, -85, 85), currentRotationAngle.y, currentRotationAngle.z);
-        PlayerBody.Rotate(Vector3.up * rotateValue.x);
 
         // Calculate movement direction based on camera's forward
         Vector3 moveDirection = FirstPersonCamera.transform.forward * moveValue.y + FirstPersonCamera.transform.right * moveValue.x;
         moveDirection.y = 0; // Ensure no vertical movement
 
         //movement stuff
-        characterController.Move(new Vector3(moveValue.x, 0, moveValue.y));
+        characterController.Move(new Vector3(moveDirection.x, 0, moveDirection.z));
 
         }
     private void OnDrawGizmos()
