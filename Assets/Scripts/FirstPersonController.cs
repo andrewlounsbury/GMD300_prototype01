@@ -7,12 +7,14 @@ using UnityEngine.InputSystem;
 public class FirstPersonController : MonoBehaviour
 {
     public float MoveSpeed = 3;
+    public float SprintSpeed = 5; 
     public float RotationSpeed = 2500;
     public InputActionAsset CharacterActionAsset;
     public Camera FirstPersonCamera;
 
     private InputAction moveAction; 
     private InputAction rotateAction;
+    private InputAction sprintAction; 
 
     private CharacterController characterController;
 
@@ -35,6 +37,7 @@ public class FirstPersonController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         moveAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Move");
         rotateAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Rotate");
+        sprintAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Sprint");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false; 
     }
@@ -42,9 +45,16 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
         //setting variables
-        moveValue = moveAction.ReadValue<Vector2>() * MoveSpeed * Time.deltaTime;
         rotateValue = rotateAction.ReadValue<Vector2>() * RotationSpeed * Time.deltaTime;
 
+        if (sprintAction.IsPressed())
+        {
+            moveValue = moveAction.ReadValue<Vector2>() * SprintSpeed * Time.deltaTime;
+        }
+        else
+        {
+            moveValue = moveAction.ReadValue<Vector2>() * MoveSpeed * Time.deltaTime;
+        }
        //camera/player rotation
         currentRotationAngle = new Vector3(currentRotationAngle.x - rotateValue.y, currentRotationAngle.y + rotateValue.x, 0);
         FirstPersonCamera.transform.rotation = Quaternion.Euler(currentRotationAngle);
