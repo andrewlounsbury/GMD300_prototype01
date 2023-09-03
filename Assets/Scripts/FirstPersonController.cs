@@ -15,13 +15,13 @@ public class FirstPersonController : MonoBehaviour
     public float Acceleration = .7f;
     public float Deceleration = .9f;
     public float SprintFOV = 75;
-    public float MaxJumpHeight = 1;
+    //public float MaxJumpHeight = 1;
 
     //private variables 
     private InputAction moveAction; 
     private InputAction rotateAction;
     private InputAction sprintAction;
-    private InputAction jumpAction;
+    //private InputAction jumpAction;
     private CharacterController characterController;
     private Vector2 moveValue; 
     private Vector2 rotateValue;
@@ -54,7 +54,7 @@ public class FirstPersonController : MonoBehaviour
         moveAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Move");
         rotateAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Rotate");
         sprintAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Sprint");
-        jumpAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Jump");
+        //jumpAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Jump");
 
         //disables cursor visability
         Cursor.lockState = CursorLockMode.Locked;
@@ -100,7 +100,8 @@ public class FirstPersonController : MonoBehaviour
         Vector3 moveDirection = FirstPersonCamera.transform.forward * moveValue.y + FirstPersonCamera.transform.right * moveValue.x;
 
         moveDirection.y = 0; //ensures no vertical movement
-        characterController.Move(new Vector3(moveDirection.x, 0, moveDirection.z));
+        moveDirection.y += verticalMovement; 
+        characterController.Move(moveDirection);
     }
 
     //function for smoother speed transitions
@@ -127,11 +128,11 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-    //
+    //function for all jumping code 
     private void ProcessJump()
     {
-
         //applying gravity 
+        verticalMovement = 0;
         verticalMovement += Physics.gravity.y * Time.deltaTime;
     }
 
