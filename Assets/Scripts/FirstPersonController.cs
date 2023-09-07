@@ -9,11 +9,12 @@ public class FirstPersonController : MonoBehaviour
     //public variables
     public float MoveSpeed = 3;
     public float SprintSpeed = 5; 
-    public float RotationSpeed = 2500;
+    public float RotationSpeed = 180;
     public InputActionAsset CharacterActionAsset;
     public Camera FirstPersonCamera;
     public float Acceleration = .7f;
     public float Deceleration = .9f;
+    public float BaseFOV = 60;
     public float SprintFOV = 75;
     //public float MaxJumpHeight = 1;
 
@@ -126,6 +127,14 @@ public class FirstPersonController : MonoBehaviour
         {
             FirstPersonCamera.fieldOfView += fov * Acceleration * Time.deltaTime;
         }
+
+        FirstPersonCamera.fieldOfView = Mathf.Clamp(FirstPersonCamera.fieldOfView, BaseFOV, SprintFOV);
+
+        /*float CurrentAccelerationTimer = 0;
+        CurrentAccelerationTimer += (isSprinting)? Time.deltaTime : -Time.deltaTime;
+        CurrentAccelerationTimer = Mathf.Clamp01(CurrentAccelerationTimer);
+
+        FirstPersonCamera.fieldOfView = Mathf.Lerp(BaseFOV, SprintFOV, CurrentAccelerationTimer * AccelerationTime);*/
     }
 
     //function for all jumping code 
