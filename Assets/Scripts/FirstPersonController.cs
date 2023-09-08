@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,20 +17,25 @@ public class FirstPersonController : MonoBehaviour
     public float Deceleration = .9f;
     public float BaseFOV = 60;
     public float SprintFOV = 75;
-    //public float MaxJumpHeight = 1;
+    public float MaxJumpHeight = 1;
+    public LayerMask GroundLayer;
+    public float GroundCheckRadius = 0.25f; 
+    public Transform GroundCheck; 
 
     //private variables 
     private InputAction moveAction; 
     private InputAction rotateAction;
     private InputAction sprintAction;
-    //private InputAction jumpAction;
+    private InputAction jumpAction;
     private CharacterController characterController;
     private Vector2 moveValue; 
     private Vector2 rotateValue;
     private Vector3 currentRotationAngle;
     private float currentSpeed = 0;
     private float FOV;
-    private float verticalMovement = 0; 
+    private float verticalMovement = 0;
+    private bool isJumping = false; 
+    private bool isGrounded = false;
 
     private void OnEnable()
     {
@@ -55,7 +61,7 @@ public class FirstPersonController : MonoBehaviour
         moveAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Move");
         rotateAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Rotate");
         sprintAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Sprint");
-        //jumpAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Jump");
+        jumpAction = CharacterActionAsset.FindActionMap("Gameplay").FindAction("Jump");
 
         //disables cursor visability
         Cursor.lockState = CursorLockMode.Locked;
@@ -89,12 +95,12 @@ public class FirstPersonController : MonoBehaviour
         if (sprintAction.IsPressed())
         {
             Accelerate(SprintSpeed, SprintFOV);
-            moveValue = moveAction.ReadValue<Vector2>() * currentSpeed * Time.deltaTime;
+            moveValue = moveAction.ReadValue<Vector2>() * currentSpeed;
         }
         else
         {
             Accelerate(MoveSpeed, FOV);
-            moveValue = moveAction.ReadValue<Vector2>() * currentSpeed * Time.deltaTime;
+            moveValue = moveAction.ReadValue<Vector2>() * currentSpeed;
         }
 
         //calculate movement direction based on camera's forward
@@ -102,7 +108,7 @@ public class FirstPersonController : MonoBehaviour
 
         moveDirection.y = 0; //ensures no vertical movement
         moveDirection.y += verticalMovement; 
-        characterController.Move(moveDirection);
+        characterController.Move(moveDirection * Time.deltaTime);
     }
 
     //function for smoother speed transitions
@@ -140,9 +146,35 @@ public class FirstPersonController : MonoBehaviour
     //function for all jumping code 
     private void ProcessJump()
     {
+
+        //check is grounded 
+        isGrounded = Physics.CheckSphere(GroundCheck.position, GroundCheckRadius, GroundLayer);
+
+        //jumping!
+        if (characterController.isGrounded && verticalMovement < 0)
+        {
+            isJumping = false;
+            verticalMovement = 0;
+        } 
+        if (isGrounded && !isJumping)
+        {
+            bool jumpButtonDown = jumpAction.triggered && jumpAction.ReadValue<float>() > 0;
+
+            if (jumpButtonDown)
+            {
+                float jumpForce = Mathf.Sqrt(-2 * MaxJumpHeight * Physics.gravity.y);
+
+                //applying jump force in the vertical direction.
+                verticalMovement += jumpForce;
+                isJumping = true;
+            }
+        }
+       
         //applying gravity 
-        verticalMovement = 0;
         verticalMovement += Physics.gravity.y * Time.deltaTime;
+
+        //moving w/ vertical movement
+        characterController.Move(Vector3.up * verticalMovement * Time.deltaTime);
     }
 
     //draws somes spherical miracles
