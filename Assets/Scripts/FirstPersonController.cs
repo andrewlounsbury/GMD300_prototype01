@@ -147,7 +147,7 @@ public class FirstPersonController : MonoBehaviour
     private void ProcessJump()
     {
 
-        //check is grounded 
+        //
         isGrounded = Physics.CheckSphere(GroundCheck.position, GroundCheckRadius, GroundLayer);
 
         //jumping!
