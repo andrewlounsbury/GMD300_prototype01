@@ -36,6 +36,7 @@ public class FirstPersonController : MonoBehaviour
     private float verticalMovement = 0;
     private bool isJumping = false; 
     private bool isGrounded = false;
+    private bool isSprinting = false; 
 
     private void OnEnable()
     {
@@ -91,14 +92,19 @@ public class FirstPersonController : MonoBehaviour
     //all code for movement
     private void ProcessMovement()
     {
+        float speed = MoveSpeed; 
         //MoveSpeed vs. SprintSpeed
         if (sprintAction.IsPressed())
         {
+            speed = SprintSpeed;
+            isSprinting = true; 
             Accelerate(SprintSpeed, SprintFOV);
             moveValue = moveAction.ReadValue<Vector2>() * currentSpeed;
         }
         else
         {
+            speed = MoveSpeed;
+            isSprinting = false;
             Accelerate(MoveSpeed, FOV);
             moveValue = moveAction.ReadValue<Vector2>() * currentSpeed;
         }
