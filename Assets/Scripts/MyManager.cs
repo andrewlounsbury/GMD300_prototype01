@@ -44,7 +44,12 @@ public class MyManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ReloadScene(); 
+            ReloadScene();
+            HasID = false;
+            HasHeliKey = false;
+            HasCraneKey = false;
+            HasMoney = false;
+            HasDoorKey = false;
         }
     }
     private void ReloadScene()
