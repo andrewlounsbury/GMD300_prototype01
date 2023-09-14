@@ -19,6 +19,5 @@ public class DoorSwitchEvent : MonoBehaviour
     private void Update ()
     {
         OnSwitch = GameObject.Find("MyManager").GetComponent<MyManager>().HasID; 
-        OnSwitch = GameObject.Find("MyManager").GetComponent<MyManager>().HasDoorKey;
     }
 }

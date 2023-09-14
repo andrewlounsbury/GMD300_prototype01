@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MyManager : MonoBehaviour
 {
@@ -37,5 +38,18 @@ public class MyManager : MonoBehaviour
     public void AddScore (int scoreToAdd)
     {
         PlayerScore += scoreToAdd;
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadScene(); 
+        }
+    }
+    private void ReloadScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }
