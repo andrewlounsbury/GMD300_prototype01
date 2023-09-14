@@ -11,4 +11,6 @@ public class EventExample : MonoBehaviour
     {
         OnCubeTouch.Invoke(); 
     }
+
+
 }

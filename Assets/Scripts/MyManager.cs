@@ -6,7 +6,12 @@ public class MyManager : MonoBehaviour
 {
     public static MyManager Instance;
 
-    public int PlayerScore = 0; 
+    public int PlayerScore = 0;
+    public bool HasID = false;
+    public bool HasHeliKey = false;
+    public bool HasCraneKey = false;
+    public bool HasMoney = false;
+    public bool HasDoorKey = false; 
 
     private void Awake()
     {
