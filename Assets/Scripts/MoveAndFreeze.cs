@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class MoveAndFreeze : MonoBehaviour
 {
-    public float moveSpeed = 2.0f; 
-    public float freezePositionY = 5.0f;
+    public float MoveSpeed = 2.0f; 
+    public float FreezePositionY = 5.0f;
     public GameObject WasherPlatform; 
     private bool shouldMove = false;
     private bool playerInsideCollider = false;
@@ -37,13 +37,13 @@ public class MoveAndFreeze : MonoBehaviour
 
         if (shouldMove)
         {
-            Vector3 newPosition = WasherPlatform.transform.position + Vector3.up * moveSpeed * Time.deltaTime;
+            Vector3 newPosition = WasherPlatform.transform.position + Vector3.up * MoveSpeed * Time.deltaTime;
             WasherPlatform.transform.position = newPosition;
 
-            if (WasherPlatform.transform.position.y >= freezePositionY)
+            if (WasherPlatform.transform.position.y >= FreezePositionY)
             {
                 shouldMove = false;
-                WasherPlatform.transform.position = new Vector3(WasherPlatform.transform.position.x, freezePositionY, WasherPlatform.transform.position.z);
+                WasherPlatform.transform.position = new Vector3(WasherPlatform.transform.position.x, FreezePositionY, WasherPlatform.transform.position.z);
             }
         }
     }

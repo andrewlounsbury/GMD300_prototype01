@@ -14504,7 +14504,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2378
+  m_VersionIndex: 2381
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -14618,8 +14618,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6523083437885191473}
+  - component: {fileID: 6295367545729817124}
   - component: {fileID: 8792044343414470451}
-  - component: {fileID: 8732406996860911389}
+  - component: {fileID: 4119438293395592350}
   m_Layer: 0
   m_Name: RoofAccessKey
   m_TagString: Untagged
@@ -14637,7 +14638,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.33, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7749661345745260582}
@@ -14645,6 +14646,33 @@ Transform:
   - {fileID: 1132468260737020168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6295367545729817124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713158433767070881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ed4f6a9da8590428860f43fcac9a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDoorKeyTouch:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6295367545729817124}
+        m_TargetAssemblyTypeName: RoofAccessPickup, Assembly-CSharp
+        m_MethodName: CollectRoofKey
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8792044343414470451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14658,8 +14686,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 50
---- !u!65 &8732406996860911389
-BoxCollider:
+--- !u!136 &4119438293395592350
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -14676,9 +14704,11 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.3184445
+  m_Height: 1.8097534
+  m_Direction: 2
+  m_Center: {x: 0.35444975, y: 0.09490315, z: -0.3544922}
 --- !u!1 &4573726710670326933
 GameObject:
   m_ObjectHideFlags: 0
@@ -60827,7 +60857,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1687
+  m_VersionIndex: 1690
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
