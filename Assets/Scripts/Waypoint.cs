@@ -7,7 +7,8 @@ public class Waypoint : MonoBehaviour
     private FirstPersonController controller;
     private TextMesh waypointText;
     [SerializeField] private int fontSizeTweak = 2;
-    [SerializeField] private int minDistance = 5; 
+    [SerializeField] private int minDistance = 5;
+    [SerializeField] private bool isActive = false;  
     void Start()
     {
         controller = FindObjectOfType<FirstPersonController>();
@@ -24,4 +25,5 @@ public class Waypoint : MonoBehaviour
             waypointText.fontSize = distance * fontSizeTweak;
         }
     }
+
 }

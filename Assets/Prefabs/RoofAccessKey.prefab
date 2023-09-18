@@ -14504,7 +14504,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2375
+  m_VersionIndex: 2378
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -14619,7 +14619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6523083437885191473}
   - component: {fileID: 8792044343414470451}
-  - component: {fileID: 9125447435697785593}
+  - component: {fileID: 8732406996860911389}
   m_Layer: 0
   m_Name: RoofAccessKey
   m_TagString: Untagged
@@ -14658,7 +14658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 50
---- !u!65 &9125447435697785593
+--- !u!65 &8732406996860911389
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60827,7 +60827,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1684
+  m_VersionIndex: 1687
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
