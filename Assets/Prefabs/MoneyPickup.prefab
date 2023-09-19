@@ -2065,7 +2065,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2331
+  m_VersionIndex: 2334
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2184,7 +2184,6 @@ GameObject:
   - component: {fileID: 2845773733922529070}
   - component: {fileID: 4159841933351057227}
   - component: {fileID: 90206840003017229}
-  - component: {fileID: 3657952906981364207}
   - component: {fileID: 8266331567068858993}
   - component: {fileID: 7506102929683691266}
   - component: {fileID: 4534201628832502453}
@@ -2422,7 +2421,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5112
+  m_VersionIndex: 5115
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2455,19 +2454,6 @@ MonoBehaviour:
     - rid: 6255904927484215303
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
       data: 
---- !u!114 &3657952906981364207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5393989583010721769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a829287589d4c4b8d804c3e61d382d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RotationSpeed: 50
 --- !u!23 &8266331567068858993
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2551,6 +2537,7 @@ GameObject:
   - component: {fileID: 8865629412894731549}
   - component: {fileID: 6494188154729800293}
   - component: {fileID: 6129006128591498242}
+  - component: {fileID: 5007630564634909618}
   m_Layer: 0
   m_Name: MoneyPickup
   m_TagString: Untagged
@@ -2637,6 +2624,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5007630564634909618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609278689011319846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a829287589d4c4b8d804c3e61d382d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSpeed: 50
 --- !u!1 &8999073673724530285
 GameObject:
   m_ObjectHideFlags: 0

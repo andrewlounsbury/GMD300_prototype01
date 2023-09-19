@@ -73,9 +73,10 @@ public class FirstPersonController : MonoBehaviour
     {
         //split everything into functions to make it more legible
         ProcessFPSCam();
+        ProcessJump();
         ProcessMovement();
-        ProcessJump(); 
     }
+
 
     //function for camera setup
     private void ProcessFPSCam()

@@ -30,7 +30,7 @@ public class MoveAndFreeze : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && WasherPlatform != null)
+        if (Input.GetKeyDown(KeyCode.E) && WasherPlatform != null && playerInsideCollider)
         {
             shouldMove = true; 
         }
