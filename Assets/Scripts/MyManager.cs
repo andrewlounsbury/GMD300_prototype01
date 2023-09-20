@@ -9,10 +9,10 @@ public class MyManager : MonoBehaviour
 
     public int PlayerScore = 0;
     public bool HasID = false;
-    public bool HasHeliKey = false;
-    public bool HasCraneKey = false;
     public bool HasMoney = false;
-    public bool HasDoorKey = false; 
+    public bool HasDoorKey = false;
+    public bool HasCraneKey = false;
+    public bool HasHeliKey = false;
 
     private void Awake()
     {
@@ -33,11 +33,6 @@ public class MyManager : MonoBehaviour
         {
             Instance = null;
         }
-    }
-
-    public void AddScore (int scoreToAdd)
-    {
-        PlayerScore += scoreToAdd;
     }
 
     public void Update()
